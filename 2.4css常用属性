@@ -1,0 +1,351 @@
+# *1.背景
+属性                        | 描述                        |
+| ----------------------------------------------------------------------------------------------------------------------- | ------------------------- |
+| [background](https://www.w3school.com.cn/cssref/pr_background.asp "CSS background 属性")                                  | 在一条声明中设置所有背景属性的简写属性。      |
+| [background-attachment](https://www.w3school.com.cn/cssref/pr_background-attachment.asp "CSS background-attachment 属性") | 设置背景图像是固定的还是与页面的其余部分一起滚动。 |
+| [background-clip](https://www.w3school.com.cn/cssref/pr_background-clip.asp "CSS background-clip 属性")                   | 规定背景的绘制区域。背景图片或颜色）是否延伸到边框下面    padding/border/content-box ：超出部分将被剪切掉
+| [background-color](https://www.w3school.com.cn/cssref/pr_background-color.asp "CSS background-color 属性")                | 设置元素的背景色。red/rgb(,,)/rgba(0-255, ,,0-1/#ff0000|
+| [background-image](https://www.w3school.com.cn/cssref/pr_background-image.asp "CSS background-image 属性")                | 设置元素的背景图像。  url(images/2.gif)              |
+| [background-origin](https://www.w3school.com.cn/cssref/pr_background-origin.asp "CSS background-origin 属性")             | 规定在何处放置背景图像。padding/border/content-box
+| [background-position](https://www.w3school.com.cn/cssref/pr_background-position.asp "CSS background-position 属性")       | 设置背景图像的开始位置。  center top：中间的上面（center、top、bottom、right、left）
+| [background-repeat](https://www.w3school.com.cn/cssref/pr_background-repeat.asp "CSS background-repeat 属性")             | 设置背景图像是否及如何重复。no-repeat/repeat-x/repeat-y  :纵向平铺
+| [background-size](https://www.w3school.com.cn/cssref/pr_background-size.asp "CSS ：ackground-size 属性")                   | 规定背景图像的尺寸。contain/cover/多个背景：多个值，隔开/宽 高
+
+## background-position
+**注意：** `background-position`是[`background-position-x`]和[`background-position-y`]的简写，它们允许您分别设置不同的坐标轴的值。
+- 1.x+y   
+```
+background-position：（20px，7px）
+```
+- 2.上下：center、top、bottom、左右：right、left     可以混合使用
+- 3.长度值+百分比：
+```
+  background-position: 20px 10%;
+```
+- 4.关键字+长度值/百分比
+```
+ background-position: top 20px;
+```
+- 5. 4-value语法
+```
+ background-position: top 20px right 10px;//将背景从顶部调整20px，从右侧调整10px:
+```
+
+## - background-image 渐变
+
+渐变是CSS3当中比较丰富多彩的一个特性，通过渐变我们可以实现许多炫丽的效果，有效的减少图片的使用数量，并且具有很强的适应性和可扩展性。
+
+渐变分为：
+
+- 线性渐变：沿着某条直线朝一个方向产生渐变效果。linear-gradient
+```
+background-image: linear-gradient(方向, 起始颜色, 终止颜色);
+background-image: linear-gradient(to right, yellow, green);
+```
+    - 方向可以是：`to left`、`to right`、`to top`、`to bottom`、角度`30deg`（指的是顺时针方向30°）。
+
+
+- 径向渐变：从一个**中心点**开始沿着**四周**产生渐变效果。radial-gradient
+```
+background-image: radial-gradient(辐射的半径大小, 中心的位置, 起始颜色, 终止颜色);
+background-image: radial-gradient(100px, at center,yellow ,green);
+```
+    中心点的位置可以是：at  left  right  center bottom  top。如果以像素为单位，则中心点参照的是盒子的左上角。
+
+
+- 重复渐变。
+
+## background-image 重复
+有四个背景图像，但是只有两个背景位置值。前两个位置值将应用于前两个图像，然后它们将再次循环—image3将被赋予第一个位置值，image4将被赋予第二个位置值。
+## background-attachment
+- fixed：不随内容和页面滚动而滚动
+- scroll：随页面滚动而滚动
+- local：局部值将背景固定在设置的元素上，因此当您滚动元素时，背景也随之滚动。
+
+## - clip-path：裁剪出元素的部分区域做展示
+
+- clip-path属性可以创建一个只有元素的部分区域可以显示的剪切区域。区域内的部分显示，区域外的隐藏。虽然`clip-path`不是背景属性，但这个属性非常强大，但往往会结合背景属性一起使用，达到一些效果。
+- `clip-path`属性的好处是，即使做了任何裁剪，**容器的占位大小是不变的**。
+```
+   /* 裁剪出圆形区域 */
+        clip-path: circle(50px at 100px 100px);
+        transition: clip-path .4s;
+```
+<https://www.runoob.com/cssref/pr-clip-path.html>
+## 背景简写顺序：cirap
+-   background-color
+-   background-image
+-   background-repeat
+-   background-attachment
+-   background-position
+
+
+# *2.文本
+
+属性                     | 描述                             |
+| ------------------------------- | --------------------------------- |
+| [color](https://www.w3school.com.cn/cssref/pr_text_color.asp "CSS color 属性")                               | 设置文本颜色。                                       |
+| [direction](https://www.w3school.com.cn/cssref/pr_text_direction.asp "CSS direction 属性")                   | 指定文本的方向 / 书写方向。                               |
+| [letter-spacing](https://www.w3school.com.cn/cssref/pr_text_letter-spacing.asp "CSS letter-spacing 属性")    | 设置字符间距。  cm                                     |
+| [line-height](https://www.w3school.com.cn/cssref/pr_dim_line-height.asp "CSS line-height 属性")              | 设置行高。                                         |
+| [text-align](https://www.w3school.com.cn/cssref/pr_text_text-align.asp "CSS text-align 属性")                | 指定文本的水平对齐方式。                                  |
+| [text-decoration](https://www.w3school.com.cn/cssref/pr_text_text-decoration.asp "CSS text-decoration 属性") | 指定添加到文本的装饰效果。 none 去掉下划线、**underline 下划线**、line-through 中划线、overline 上划线
+| [text-indent](https://www.w3school.com.cn/cssref/pr_text_text-indent.asp "CSS text-indent 属性")             | 指定文本块中首行的缩进。  2em；首行缩进两个汉字，单位比较奇怪，叫做em，em就是汉字的一个宽度。                                |
+| [text-shadow](https://www.w3school.com.cn/cssref/pr_text-shadow.asp "CSS text-shadow 属性")                  | 指定添加到文本的阴影效果。/`水平位移 垂直位移 模糊程度 阴影颜色。`  /可以设置多个阴影，每个阴影之间使用逗号隔开| [text-transform](https://www.w3school.com.cn/cssref/pr_text_text-transform.asp "CSS text-transform 属性")    | 控制文本的大小写。uppercase大写、lowercase小写  、`capitalize`每个单词的首字母大写                                   |
+| [text-overflow](https://www.w3school.com.cn/cssref/pr_text-overflow.asp "CSS text-overflow 属性")            | 指定应如何向用户示意未显示的溢出内容。                           |
+| [unicode-bidi](https://www.w3school.com.cn/cssref/pr_unicode-bidi.asp "CSS unicode-bidi 属性")               | 与 direction 属性一起使用，设置或返回是否应重写文本来支持同一文档中的多种语言。 |
+| [vertical-align](https://www.w3school.com.cn/cssref/pr_pos_vertical-align.asp "CSS vertical-align 属性")     | 指定文本的垂直对齐方式。left、right、center、justify                                  |
+| [white-space](https://www.w3school.com.cn/cssref/pr_text_white-space.asp "CSS white-space 属性")             | 指定如何处理元素内的空白。                                 |
+| [word-spacing](https://www.w3school.com.cn/cssref/pr_text_word-spacing.asp "CSS word-spacing 属性")          | 设置单词间距。cm
+
+# *3.轮廓
+属性                       | 描述      |
+| ------------------------ | ------------------------------------ |
+| [outline](https://www.w3school.com.cn/cssref/pr_outline.asp "CSS outline 属性")                      | 简写属性，在一条声明中设置  outline-color、outline-style 以及outline-width。 |
+| [outline-color](https://www.w3school.com.cn/cssref/pr_outline-color.asp "CSS outline-color 属性")    | 设置轮廓的颜色。                                                    |
+| [outline-offset](https://www.w3school.com.cn/cssref/pr_outline-offset.asp "CSS outline-offset 属性") | 指定轮廓与元素的边缘或边框之间的空间。                                         |
+| [outline-style](https://www.w3school.com.cn/cssref/pr_outline-style.asp "CSS outline-style 属性")    | 设置轮廓的样式。                                                    |
+| [outline-width](https://www.w3school.com.cn/cssref/pr_outline-width.asp "CSS outline-width 属性")    | 设置轮廓的宽度。
+
+## outline-offset
+属性在元素的轮廓与边框之间添加空间。元素及其轮廓之间的空间是透明的。
+
+## outline-style
+outline （轮廓）是绘制于元素周围的一条线，位于边框边缘的外围，可起到突出元素的作用。
+注释：轮廓线不会占据空间，也不一定是矩形。
+none    | 默认。定义无轮廓。                          |
+| ------- | ---------------------------------- |
+| dotted  | 定义点状的轮廓。                           |
+| dashed  | 定义虚线轮廓。                            |
+| solid   | 定义实线轮廓。                            |
+| double  | 定义双线轮廓。双线的宽度等同于 outline-width 的值。  |
+| groove  | 定义 3D 凹槽轮廓。此效果取决于 outline-color 值。 |
+| ridge   | 定义 3D 凸槽轮廓。此效果取决于 outline-color 值。 |
+| inset   | 定义 3D 凹边轮廓。此效果取决于 outline-color 值。 |
+| outset  | 定义 3D 凸边轮廓。此效果取决于 outline-color 值。 |
+| inherit | 规定应该从父元素继承轮廓样式的设置。
+
+# *4.列表
+属性                              | 描述                    |
+| ------------------ | --------------------- |
+| [list-style](https://www.w3school.com.cn/cssref/pr_list-style.asp "CSS list-style 属性")                            | 简写属性。在一条声明中设置列表的所有属性。type-position-image |
+| [list-style-image](https://www.w3school.com.cn/cssref/pr_list-style-image.asp "CSS list-style-image 属性")          | 指定图像作为列表项标记。   list-style-image:url("/i/arrow.gif");  |
+| [list-style-position](https://www.w3school.com.cn/cssref/pr_list-style-position.asp "CSS list-style-position 属性") | 规定列表项标记（项目符号）的位置。     |
+| [list-style-type](https://www.w3school.com.cn/cssref/pr_list-style-type.asp "CSS list-style-type 属性")             | 规定列表项标记的类型。
+
+## list-style-position
+值       | 描述                                          |
+| ------- | ------------------------------------------- |
+| inside  | 列表项目标记放置在文本以内，且环绕文本根据标记对齐。                  |
+| outside | 默认值。保持标记位于文本的左侧。列表项目标记放置在文本以外，且环绕文本不根据标记对齐。 |
+| inherit | 规定应该从父元素继承 list-style-position 属性的值。
+
+## list-style-type
+值                    | 描述                                                  |
+| -------------------- | --------------------------------------------------- |
+| none                 | 无标记。                                                |
+| disc                 | 默认。标记是实心圆。                                          |
+| circle               | 标记是空心圆。                                             |
+| square               | 标记是实心方块。                                            |
+| decimal              | 标记是数字。                                              |
+| decimal-leading-zero | 0开头的数字标记。(01, 02, 03, 等。)                           |
+| lower-roman          | 小写罗马数字(i, ii, iii, iv, v, 等。)                       |
+| upper-roman          | 大写罗马数字(I, II, III, IV, V, 等。)                       |
+| lower-alpha          | 小写英文字母The marker is lower-alpha (a, b, c, d, e, 等。) |
+| upper-alpha          | 大写英文字母The marker is upper-alpha (A, B, C, D, E, 等。) |
+| lower-greek          | 小写希腊字母(alpha, beta, gamma, 等。)                      |
+| lower-latin          | 小写拉丁字母(a, b, c, d, e, 等。)                           |
+| upper-latin          | 大写拉丁字母(A, B, C, D, E, 等。)                           |
+| hebrew               | 传统的希伯来编号方式                                          |
+| armenian             | 传统的亚美尼亚编号方式                                         |
+| georgian             | 传统的乔治亚编号方式(an, ban, gan, 等。)                        |
+| cjk-ideographic      | 简单的表意数字                                             |
+| hiragana             | 标记是：a, i, u, e, o, ka, ki, 等。（日文片假名）                |
+| katakana             | 标记是：A, I, U, E, O, KA, KI, 等。（日文片假名）                |
+| hiragana-iroha       | 标记是：i, ro, ha, ni, ho, he, to, 等。（日文片假名）            |
+| katakana-iroha       | 标记是：I, RO, HA, NI, HO, HE, TO, 等。（日文片假名）
+
+# 5.滤镜 filter
+比如说让图片变成灰度图的效果，可以这样设置滤镜：
+```
+<img src="3.jpg" style="filter:grayscale(100%)">
+```
+# 6.书写模式
+书写模式是指文本的排列方向是横向还是纵向的。`writing-mode`
+`writing-mode`的三个值分别是：
+-   `horizontal-tb`: 块流向从上至下。对应的文本方向是横向的。
+-   `vertical-rl`: 块流向从右向左。对应的文本方向是纵向的。
+-   `vertical-lr`: 块流向从左向右。对应的文本方向是纵向的。
+# 7.字体
+## 简写
+font: 加粗 字号/行高 字体
+
+```
+font: 400 14px/24px "宋体";/*400是nomal，700是bold*/
+```
+
+## font-family
+- 请以您需要的字体开始，并以通用系列结束（如果没有其他可用字体，则让浏览器选择通用系列中的相似字体）。字体名称应以逗号分隔。
+<https://www.w3school.com.cn/css/css_font.asp>
+```
+.p1 {
+  font-family: "Times New Roman", Times, serif;
+}
+```
+## 字体样式 font-style
+-   normal - 文字正常显示
+-   italic - 文本以斜体显示
+-   oblique - 文本为“倾斜”（倾斜与斜体非常相似，但支持较少）
+
+## font-weight 属性指定字体的粗细：
+
+```
+p.normal {
+  font-weight: normal;
+}
+
+p.thick {
+  font-weight: bold;
+}
+```
+## font-variant
+small-caps 字体：全部变为大写字母，但是大小比原来的小。
+
+```
+p.normal {
+  font-variant: normal;
+}
+
+p.small {
+  font-variant: small-caps;
+}
+```
+## font-size
+注释：如果您没有指定字体大小，则普通文本（如段落）的默认大小为 `16px（16px = 1em`）。
+
+```
+body {
+  font-size: 100%;
+}
+
+h1 {
+  font-size: 2.5em;  //16px*2.5=  px
+}
+
+
+<h1 style="font-size:10vw">Hello World</h1>  
+//“视口宽度”（"viewport width"）。
+这样，文本大小将遵循浏览器窗口的大小，请调整浏览器窗口的大小，以查看字体大小如何缩放：视口（Viewport）是浏览器窗口的大小。 1vw = 视口宽度的 1％。如果视口为 50 厘米宽，则 1vw 为 0.5 厘米。
+```
+
+## 字体说明
+
+1）网页中不是所有字体都能用，因为这个字体要看用户的电脑里面装没装，比如你设置：
+
+```
+font-family: "华文彩云";
+```
+
+上方代码中，如果用户的 Windows 电脑里面没有这个字体，那么就会变成宋体。
+
+页面中，中文我们一般使用：微软雅黑、宋体、黑体。英文使用：Arial、Times New Roman。页面中如果需要其他的字体，就需要单独安装字体，或者切图。
+
+2）为了防止用户电脑没有微软雅黑这个字体。就要用英语的逗号，提供备选字体。如下：（可以备选多个），如果用户电脑里没有安装微软雅黑字体，那么就是宋体。
+
+```
+font-family: "微软雅黑","宋体";
+```
+
+3）我们须将英语字体放在最前面，这样所有的中文，就不能匹配英语字体，就自动的变为后面的中文字体：英文会采用Times New Roman字体，而中文会采用微软雅黑字体（因为美国人设计的Times New Roman字体并不针对中文，所以中文会采用后面的微软雅黑）。比如说，对于`smyhvae哈哈哈`这段文字，`smyhvae`会采用Times New Roman字体，而`哈哈哈`会采用微软雅黑字体。
+
+```
+font-family: "Times New Roman","微软雅黑","宋体";
+```
+
+4）所有的中文字体，都有英语别名。
+
+```
+font-family: "Microsoft YaHei";
+font-family: "SimSun";
+
+font:12px/30px  "Times New Roman","Microsoft YaHei","SimSun";
+```
+
+5）行高可以用百分比，表示字号的百分之多少。
+
+一般来说，百分比都是大于100%的，因为行高一定要大于字号。
+
+字体加粗：
+
+[![复制代码](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7ca45a822d2940209bdbf866b87aaf79~tplv-k3u1fbpfcp-zoom-1.image)](<> "复制代码")
+
+```
+.div {
+    font-weight: normal; /*正常*/
+    font-weight: bold;  /*加粗*/
+    font-weight: 100;
+    font-weight: 200;
+    font-weight: 900;
+}
+```
+
+[![复制代码](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dc86e6804a0b44dabcf6265efd676b89~tplv-k3u1fbpfcp-zoom-1.image)](<> "复制代码")
+
+在设置字体是否加粗时，属性值既可以填写`normal`、`bold`这样的加粗字体，也可以直接填写 100至900 这样的数字。`normal`的值相当于400，`bold`的值相当于700。
+
+**6）字体的常见格式**
+
+TureTpe格式：(.ttf)
+
+.ttf 字体是Windows和Mac的最常见的字体，是一种RAW格式。
+
+支持这种字体的浏览器有IE9+、Firefox3.5+、Chrome4+、Safari3+、Opera10+、iOS Mobile、Safari4.2+。
+
+OpenType格式：(.otf)
+
+.otf 字体被认为是一种原始的字体格式，其内置在TureType的基础上。
+
+支持这种字体的浏览器有Firefox3.5+、Chrome4.0+、Safari3.1+、Opera10.0+、iOS Mobile、Safari4.2+。
+
+Web Open Font Format格式：(.woff)
+
+woff字体是Web字体中最佳格式，他是一个开放的TrueType/OpenType的压缩版本，同时也支持元数据包的分离。
+
+支持这种字体的浏览器有IE9+、Firefox3.5+、Chrome6+、Safari3.6+、Opera11.1+。
+
+Embedded Open Type格式：(.eot)
+
+.eot字体是IE专用字体，可以从TrueType创建此格式字体，支持这种字体的浏览器有IE4+。
+
+SVG格式：(.svg)
+
+.svg字体是基于SVG字体渲染的一种格式。
+
+支持这种字体的浏览器有Chrome4+、Safari3.1+、Opera10.0+、iOS Mobile Safari3.2+。
+
+总结：了解了上面的知识后，我们就需要为不同的浏览器准备不同格式的字体。通常我们会通过字体生成工具帮我们生成各种格式的字体，因此无需过于在意字体格式之间的区别。
+
+# 8.图标
+先添加到`<head>`:
+
+```
+ //谷歌图标：
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+// Bootstrap 图标
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+// Font Awesome 图标
+<script src="https://kit.fontawesome.com/yourcode.js"></script>
+```
+# 9.表格
+## CSS 表格属性
+
+| 属性                                                                                                    | 描述                      |
+| ----------------------------------------------------------------------------------------------------- | ----------------------- |
+| [border](https://www.w3school.com.cn/cssref/pr_border.asp "CSS border 属性")                            | 简写属性。在一条声明中设置所有边框属性。    |
+| [border-collapse](https://www.w3school.com.cn/cssref/pr_border-collapse.asp "CSS border-collapse 属性") | 规定是否应折叠表格边框。            |
+| [border-spacing](https://www.w3school.com.cn/cssref/pr_border-spacing.asp "CSS border-spacing 属性")    | 规定相邻单元格之间的边框的距离。        |
+| [caption-side](https://www.w3school.com.cn/cssref/pr_tab_caption-side.asp "CSS caption-side 属性")      | 规定表格标题的位置。              |
+| [empty-cells](https://www.w3school.com.cn/cssref/pr_tab_empty-cells.asp "CSS empty-cells 属性")         | 规定是否在表格中的空白单元格上显示边框和背景。 |
+| [table-layout](https://www.w3school.com.cn/cssref/pr_tab_table-layout.asp "CSS table-layout 属性")      | 设置用于表格的布局算法。
