@@ -1,0 +1,264 @@
+在 CSS 中，所有的元素都被一个个的“盒子（box）”包围。无论是div、span、还是a都是盒子。但是，`图片、表单元素`一律看作是`文本`，它们并不是盒子。这个很好理解，比如说，一张图片里并不能放东西，它自己就是自己的内容。
+# 块级盒子（Block box） 和 内联盒子（Inline box）以及flexbox
+- `display` 属性可以决定盒子的显示类型是内部显示类型flex还是外部显示类型block、inline。
+## 图片展示
+- ul{display: inline-flex;} 
+
+![1638518656(1).jpg](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5d738d33141c45ec9c7a02cf1ce5afd1~tplv-k3u1fbpfcp-watermark.image?)
+
+- ul{display: inline;}      ul{display: flex;} ul{display: block;} 
+![微信图片_20211203160224.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3accd393202a4ffb8fd1398be4c03647~tplv-k3u1fbpfcp-watermark.image?)
+
+在 CSS 中我们广泛地使用两种“盒子” —— **块级** **盒子** (**block box**) 和 **内联盒子** (**inline box**) **。** 这两种盒子会在**页面流**（page flow）和**元素之间的关系**方面表现出不同的行为:
+## block box
+一个被定义成块级的`block`盒子会表现出以下行为:
+
+-   盒子会在内联的方向上扩展并占据父容器在该方向上的所有可用空间，在绝大数情况下意味着盒子会和父容器一样宽
+-   每个盒子都会换行
+-   [`width`] 和 [`height`] 属性可以发挥作用
+-   内边距（padding）, 外边距（margin） 和 边框（border） 会将其他元素从当前盒子周围“推开”
+
+`注释：`除非特殊指定，诸如标题(`<h1>`等)和段落(`<p>`)默认情况下都是块级的盒子。
+
+## inline box
+一个盒子对外显示为 `inline`，那么他的行为如下:
+
+-   盒子不会产生换行。
+-    [`width`]和 [`height`] 属性将不起作用。
+-   **垂直方向的`·内边距、外边距以及边框`会被应用**但是不会把其他处于 `inline` 状态的盒子推开。
+-   水平方向的内边距、外边距以及边框会被应用且会把其他处于 `inline` 状态的盒子推开。
+
+`注释：`用做链接的 `<a>` 元素、 `<span>`、 `<em>` 以及 `<strong>` 都是默认处于 `inline` 状态的。
+
+![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8a2da99a42ca4773ac07991468f7df6a~tplv-k3u1fbpfcp-watermark.image?)
+
+## display：inline-block
+-   设置`width` 和`height` paddingbordermargin都属性会生效。
+-   `padding`, `margin`, 以及`border` 会推开其他元素。
+
+但是，它不会跳转到新行，如果显式添加`width` 和`height` 属性，它只会变得比其内容更大。
+![image.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/76eb4610260241488b19d95c086c6088~tplv-k3u1fbpfcp-watermark.image?)
+### 应用：使得链接有更大的命中区域
+    对a添加内边距：
+    a {
+        display：inline-block
+        padding：2em;
+    }
+
+
+**我们通过对盒子[`display`] 属性的设置，比如 `inline` 或者 `block` ，来控制盒子的外部显示类型。`display：flex`-->控制盒子的内部显示类型**
+
+
+
+# 盒模型属性
+一个盒子中主要的属性就5个：
+## - width和height：
+**内容**的宽度、高度（不是盒子的宽度、高度）。注意：宽度和真实占有宽度，不是一个概念！真实占有宽度包括（border+padding+margin）*2
+-   auto - 默认。浏览器计算高度和宽度。
+-   *length* - 以 px、cm 等定义高度/宽度。
+    -   % - 以包含块的百分比定义高度/宽度。
+-   initial - 将高度/宽度设置为默认值。
+-   inherit - 从其父值继承高度/宽度。
+属性      | 描述         |
+| --------------------------------- | ---------- |
+| [height](https://www.w3school.com.cn/cssref/pr_dim_height.asp "CSS height 属性")             | 设置元素的高度。   |
+| [max-height](https://www.w3school.com.cn/cssref/pr_dim_max-height.asp "CSS max-height 属性") | 设置元素的最大高度。 |
+| [max-width](https://www.w3school.com.cn/cssref/pr_dim_max-width.asp "CSS max-width 属性")    | 设置元素的最大宽度。 |
+| [min-height](https://www.w3school.com.cn/cssref/pr_dim_min-height.asp "CSS min-height 属性") | 设置元素的最小高度。 |
+| [min-width](https://www.w3school.com.cn/cssref/pr_dim_min-width.asp "CSS min-width 属性")    | 设置元素的最小宽度。 |
+| [width](https://www.w3school.com.cn/cssref/pr_dim_width.asp "CSS width 属性")                | 设置元素的宽度。
+
+## - padding：内边距。+
+所有内边距属性都可以设置以下值：
+-   *length* - 以 px、pt、cm 等单位指定内边距
+-   % - 指定以包含元素宽度的百分比计的内边距
+-   inherit - 指定应从父元素继承内边距
+
+提示：`不允许负值。`
+
+## - border：边框。
+值              | 描述                                             |
+| -------------- | ---------------------------------- |
+| *border-width* | 规定边框的宽度。参阅：[border-width](https://www.w3school.com.cn/cssref/pr_border-width.asp "CSS border-width 属性") 中可能的值。 |
+| *border-style* | 规定边框的样式。参阅：[border-style](https://www.w3school.com.cn/cssref/pr_border-style.asp "CSS border-style 属性") 中可能的值。 |
+| *border-color* | 规定边框的颜色。参阅：[border-color](https://www.w3school.com.cn/cssref/pr_border-color.asp "CSS border-color 属性") 中可能的值。 |
+| inherit        | 规定应该从父元素继承 border 属性的设置。
+||简写：p{border：5px solid blue}|
+||上面是全部边框的，如果要设置单个边框：border-top-style|
+
+
+*border-width*值        | 描述              |
+| -------- | --------------- |
+| thin     | 定义细的边框。         |
+| medium   | 默认。定义中等的边框。     |
+| thick    | 定义粗的边框。         |
+| *length* | 允许您自定义边框的宽度。    |
+| inherit  | 规定应该从父元素继承边框宽度。
+
+*border-style*值       | 描述                                         |
+| ------- | ------------------------------------------ |
+| none    | 定义无边框。                                     |
+| hidden  | 与 "none" 相同。不过应用于表时除外，对于表，hidden 用于解决边框冲突。 |
+| dotted  | 定义点状边框。在大多数浏览器中呈现为实线。                      |
+| dashed  | 定义虚线。在大多数浏览器中呈现为实线。                        |
+| solid   | 定义实线。                                      |
+| double  | 定义双线。双线的宽度等于 border-width 的值。              |
+| groove  | 定义 3D 凹槽边框。其效果取决于 border-color 的值。         |
+| ridge   | 定义 3D 垄状边框。其效果取决于 border-color 的值。         |
+| inset   | 定义 3D inset 边框。其效果取决于 border-color 的值。     |
+| outset  | 定义 3D outset 边框。其效果取决于 border-color 的值。    |
+| inherit | 规定应该从父元素继承边框样式。
+
+*border-color*值            | 描述                                   |
+| ------------ | ------------------------------------ |
+| *color_name* | 规定颜色值为颜色名称的边框颜色（比如 red）。             |
+| *hex_number* | 规定颜色值为十六进制值的边框颜色（比如 #ff0000）。        |
+| *rgb_number* | 规定颜色值为 rgb 代码的边框颜色（比如 rgb(255,0,0)）。 |
+| transparent  | 默认值。边框颜色为透明。                         |
+| inherit      | 规定应该从父元素继承边框颜色。
+
+## - margin：外边距。+-
+- 无论使用标准模型还是替代模型，外边距总是在计算可见部分后额外添加。+-
+- 在外边距设置为`正`时是如何`推开周边元素`，以及设置为`负`时，是如何`收缩空间`的。
+
+### 外边距折叠
+- 如果你有两个外边距相接的元素（没有内边距和边框），这些外边距将合并为一个外边距，即最大的单个外边距的大小。**垂直外边距相遇**
+- 注释：只有`普通文档流`中`块框`的`垂直外边距:上下`才会发生外边距合并。`行内框`、`浮动框`或`绝对定位之间的外边距`不会合并。
+- 这就是为什么p元素占据资源少
+
+### 所有外边距属性都可以设置以下值：
+
+-   auto - 浏览器来计算外边距，以使p元素在其容器中水平居中。p{margin：auto；}
+-   *length* - 以 px、pt、cm 等单位指定外边距
+-   % - 指定以包含元素宽度的百分比计的外边距
+-   inherit - 指定应从父元素继承外边距
+属性         | 描述                    |
+| -------------------- | --------------------- |
+| [margin]        | 用于在一条声明中设置外边距属性的简写属性。 |
+| [margin-bottom] | 设置元素的下外边距。            |
+| [margin-left]     | 设置元素的左外边距。            |
+| [margin-right] | 设置元素的右外边距。            |
+| [margin-top]  | 设置元素的上外边距。
+
+## box-shadow：边框阴影
+
+```
+box-shadow: 水平偏移 垂直偏移 模糊程度 阴影大小 阴影颜色
+box-shadow: 15px 21px 48px -2px #666;
+```
+
+参数解释：
+
+- 水平偏移：正值向右 负值向左。
+
+- 垂直偏移：正值向下 负值向上。
+
+- 模糊程度：不能为负值。
+
+另外，后面还可以再加一个inset属性，表示内阴影。如果不写，则默认表示外阴影。例如：
+
+```
+box-shadow:3px 3px 3px 3px #666 inset;
+```
+
+ 
+
+## border-image
+
+边框图片有以下属性：
+
+
+
+```
+/* 边框图片的路径*/
+border-image-source: url("images/border.png");
+
+/* 图片边框的裁剪*/
+border-image-slice: 27;
+
+/*图片边框的宽度*/
+border-image-width: 27px;
+
+/*边框图片的平铺*/
+/* repeat :正常平铺 但是可能会显示不完整*/
+/*round: 平铺 但是保证 图片完整*/
+/*stretch: 拉伸显示*/
+border-image-repeat: stretch;
+```
+
+
+综合属性：
+
+```
+border-image: url("images/border.png") 27/20px round;
+```
+
+ 
+
+## border-radius
+
+边框的每个圆角，本质上是一个圆，圆有**水平半径**和**垂直半径**：如果二者相等，就是圆；如果二者不等， 就是椭圆。
+
+[![复制代码](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/df7f528e5c3f486d9c3baf6d3626106d~tplv-k3u1fbpfcp-zoom-1.image)](<> "复制代码")
+
+```
+border-top-left-radius: 60px 120px;        //参数解释：水平半径   垂直半径
+border-top-right-radius: 60px 120px;
+border-bottom-left-radius: 60px 120px;
+border-bottom-right-radius: 60px 120px;
+
+border-radius: 60px/120px;             //参数：水平半径/垂直半径
+
+border-radius: 20px 60px 100px 140px;  //从左上开始，顺时针赋值。如果当前角没有值，取对角的值
+
+border-radius: 20px 60px;
+
+border-radius: 60px; //四个角的半径都相同时
+```
+
+
+
+# css盒模型（标准盒模型）/ie盒模型
+`完整的 CSS 盒模型应用于块级盒子，内联盒子只使用盒模型中定义的部分内容。`
+# CSS盒模型和IE盒模型的区别：
+## - 在标准盒子模型中:
+- 可见区域：content+padding
+`width 和 height `指的是`内容区域`的宽度和高度。增加`内边距、边框和外边距不会影响`内容区域的尺寸，但是会增加元素框的总尺寸,可视区域会变化。
+
+## - IE盒子模型中，
+width 和 height =指的是`内容区域+padding`的宽度和高度，也就是`可见宽度`。如果更改padding，padding增加那么内容区域就会缩小。保持content+padding不变。margin+border 不计入实际大小.
+
+## - 转换：`默认浏览器`会使用`标准模型`
+```
+如果需要使用替代模型 ：
+.box {                 //border-box设置之后不会改变
+  box-sizing: border-box;
+} 
+
+如果要将全部元素都使用ie模型：
+html{              //设置 `box-sizing` 在 `<html>` 元素上
+    box-sizing：border-box； 
+}
+
+*， *：：before，*::after{               //然后设置所有元素继承该属性
+     box-sizing：inherit；
+}
+
+```
+
+注：Android中也有margin和padding的概念，意思是差不多的，如果你会一点Android，应该比较好理解吧。区别在于，Android中没有border这个东西，而且在Android中，margin并不是控件的一部分。
+
+`注意：body标签也有margin`
+
+`<body>`标签有必要强调一下。很多人以为`<body>`标签占据的是整个页面的全部区域，其实是错误的，正确的理解是这样的：整个网页最大的盒子是`<document>`，即浏览器。而`<body>`是`<document>`的儿子。浏览器给`<body>`默认的`margin大小是8个像素`，此时`<body>`占据了整个页面的一大部分区域，而不是全部区域。
+
+
+
+
+
+
+
+
+
+
+
