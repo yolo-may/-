@@ -1,0 +1,570 @@
+批注：
+全文大部分是根据freecodecamp和才华充电中的博客归纳整理的；
+没有把所有内容写出来，而是根据面试内容和项目整理了常用的知识点。
+推荐才华充电中的博客：<https://www.cnblogs.com/dangjf/p/12997002.html>，内容很全，非常适合入门学习。
+# 1.基础知识：
+html元素：是指从开始标签到结束标签的所有内容。
+html嵌套：指一个html元素可以包含其他html元素。
+
+html标签的等级：
+          文本级标签：p,span,a,b,i,u,em;(只能放文字、图片、表单元素)
+          容器级标签：div、h系列、li、dt、dd（可以放任何东西）
+          
+标准的div+css页面，只会用到种类很少的标签：
+           div p h1 span a img ul ol dl input
+           
+h、p、body大部分属性都需要用css样式代替
+# 2.常用标签
+## 1.!DOCTYPE
+
+- !DOCTYPE 声明不是 HTML 标签；它是指示 web 浏览器关于页面使用哪个 HTML 版本进行编写的指令。tell the browser which version of HTML your page is using.
+## 2.html
+此元素可告知浏览器其自身是一个 HTML 文档，并且限定文档的开始和结束点。
+属性       | 值     | 描述                         
+  manifest | *url*  | 定义一个 URL，在这个 URL 上描述了文档的缓存信息。
+
+## 3.head
+- markup with information about your page would go into the `head` tag
+## 4.body
+- markup with the content of the page (what displays for a user) would go into the `body` tag.
+<https://www.w3school.com.cn/tags/tag_body.asp>
+
+## 5.h1-h6
+
+请不要利用标题标签来改变同一行中的字体大小。相反，我们应当使用层叠样式表定义来达到漂亮的显示效果。
+<https://www.w3school.com.cn/tags/tag_hn.asp>
+
+## 6.p    (paragraph element)
+
+    p 元素会自动在其前后创建一些空白。浏览器会自动添加这些空间，您也可以在样式表中规定.
+    p元素的属性：align
+        align对齐（place or arrange things in a straight line.）
+    -   left/right/center/justify：两端对齐
+    -   right  <p align="right">paragraph</p>
+    -   不建议使用；html4/xhtml1.0不支持
+      **CSS 语法代替**：<p style="text-align:right">
+    -   left/right/center/justify/inherit
+  
+## 7.元信息
+`link`, `meta`, `title`, and `style`, typically go inside the `head` element.
+### head
+- 所有头部元素的容器。
+- ·`<head>·` 中的元素可以引用脚本、指示浏览器在哪里找到样式表、提供元信息等等。
+- 描述了文档的各种属性和信息，包括文档的标题、在 Web 中的位置以及和其他文档的关系等。绝大多数文档头部包含的数据都不会真正作为内容显示给读者。
+- `<title> `定义文档的标题，它是 head 部分中唯一必需的元素。
+
+### meta（Metadata elements）
+- 提供有关页面的元信息（meta-information），比如针对搜索引擎和更新频度的描述和关键词。
+- `<meta/>` 标签位于文档的头部，不包含任何内容。`<meta>` 标签的属性定义了与文档相关联的名称/值对。
+- 属性：
+        *当服务器向浏览器发送信息时，会发送许多名称值对，其中必须至少有一个content-type：text/html（是例子，告诉浏览器要接受一个html文档）
+```
+    必须属性：
+    1）content：提供名称值对中的值，必须和name/http一起使用。
+    
+    可选属性：
+    2）name：
+            <meta  name=""keyword"  content="key ,sql">
+           - name 属性提供了名称/值对中的名称。把 content 属性关联到一个名称。
+           - HTML 和 XHTML 标签都没有指定任何预先定义的 <meta> 名称。通常情况下，您可以自由使用对自己和源文档的读者来说富有意义的名称。
+            -"keywords" 是一个经常被用到的名称。它为文档定义了一组关键字。某些搜索引擎在遇到这些关键字时，会用这些关键字对文档进行分类。
+            -如果内有name属性，就会采用http-equiv里面的名字。
+            
+    3） http-equiv（equivalent）：为名称/值对提供了名称。
+            -把 content 属性关联到 HTTP 头部。
+            -使用带有 http-equiv 属性的 <meta> 标签时，服务器将把名称/值对添加到发送给浏览器的内容头部。
+            <meta  http-equiv="charset" content="iso-8859-1">
+            浏览器接受的内容：content-type: text/html ， charset：iso-8859-1
+            
+    eg）charset定义网页的编码方式
+            <meta charset="">
+            <meta http-equiva=""  content="text/html;carset="" "
+            
+    eg)视口宽度
+        <meta name="viewport"  content="width=device-width; initial-scale=1">
+        width=device-width:表示视口宽度=屏幕宽度
+    eg)窗口描述description
+         <meta name="description"  content="真好看">
+    eg)页面跳转
+          <meta  http-equiv="refresh"  content="3; www.baodu.com"
+```
+ <https://www.w3school.com.cn/tags/tag_meta.asp#meta_prop_name>
+
+### title
+- 浏览器会以特殊的方式来使用标题，并且通常把它放置在浏览器窗口的标题栏或状态栏上。
+- 当把文档加入用户的链接列表或者收藏夹或书签列表时，标题将成为该文档链接的默认名称
+- 所有浏览器都支持
+- 唯一head标签要求包含的东西.
+- 访问title：
+```
+var x = document.getElementById("myTitle");
+```
+<https://www.w3school.com.cn/tags/tag_title.asp>
+### base
+- 为页面上的所有链接规定默认地址或默认目标。
+- 通常情况下，浏览器会从当前文档的 URL 中提取相应的元素来填写相对 URL 中的空白。使用 `<base> `标签可以改变这一点。浏览器随后将不再使用当前文档的 URL，而使用指定的基本 URL 来解析所有的相对 URL。这其中包括` <a>、<img>、<link>、<form> `标签中的 URL。
+- 属性
+```
+href  ：url
+target：在何处打开页面中所有的链接。
+            _blank
+        -   _parent
+        -   _self
+        -   _top
+        -   *framename* 
+```
+## 8.main 整合p h
+
+
+## .commenting/uncomment html /comment out html/
+    <!--     
+    --> 
+## br
+- `<br>`可插入一个简单的换行符。
+- `<br>`标签是空标签（意味着它没有结束标签，因此这是错误的：`<br></br>`。
+- `<br>` 标签只是简单地开始新的一行，而当浏览器遇到 `<p> `标签，通常会在相邻的段落之间插入一些垂直的间距。(p是段落，本来就会有行间距)
+- 在 HTML 中`<br>` 标签没有结束标签。在 XHTML 中，`<br> `标签必须被正确地关闭，比如这样：`<br />`。
+- `clear`属性
+```
+    *希望文本流在内联表格或图像的下一行继续输出，请使用 clear 属性，该属性有三个可选的值：left、right 或者 all，每个值都代表一个边界或两边的边界。
+    ***当指定的边界没有图像时，浏览器才会继续输出文本。
+    *一般情况下，文本流中的其他行会在内联图像的底部显示，除非图形的 <img> 标签被设置为左对齐或右对齐（对于 <table> 标签也一样）。因此，<br> 标签的 clear 属性只对这些左对齐或右对齐的图像或表格起作用。
+    <img src=""  align="left/right/center/justify">
+        dsfgs <br clear="left"/>ghcjcj
+    </img>
+```
+<https://www.w3school.com.cn/tags/tag_br_prop_clear.asp>
+
+## hr
+
+`<hr> `标签在 HTML 页面中创建一条水平线。
+
+水平分隔线（horizontal rule）可以在视觉上将文档分隔成各个部分。
+
+<https://www.w3school.com.cn/tags/tag_hr.asp>
+
+# 3.链接
+## 1.img 图像
+
+
+   
+- 能够插入的图片类型是：jpg(jpeg)、gif、png、bmp等。
+- 不能往网页中插入的图片格式是：psd、ai等。
+
+ alt属性:加载不出来的替代文本。
+```
+        All `img` elements **must** have an `alt` attribute.
+        If the image is purely decorative, using an empty `alt` attribute is a best practice.
+        Ideally the `alt` attribute should not contain special characters unless needed.
+```
+       
+src属性：图片的路径   point to a specific image's URL using the `src` attribute.
+```
+src和img都只有相对和绝对路径；
+相对路径：
+    -图片和页面都必须在同一个服务器上；
+    -`.` 和 `..` 分表代表当前目录和上一层目录。
+    -当前目录：  <img src="2.jpg">   /<img=".\2.jpg"
+    -上一层目录的图片： <img src='..\2.jpg'
+绝对路径：
+    -盘符路径： c:\
+    -网址路径：http：//
+
+ps:
+- 绝对不允许使用`file://`开头的文件，这个是完全错误的！
+问题：我的网页在C盘，图片却在D盘，能不能插入呢？
+答案： 用相对路径不能，用绝对路径也不能。
+注意：可以使用file://来插入，但是这种方法，没有任何意义！因为服务器上没有所谓c盘、d盘。
+```
+title属性：
+```
+提示性文本。鼠标悬停时出现的文本。
+```
+用于改变图像的位置的css属性：
+```
+float  ：在哪个方向浮动，实现文本包围图像的效果。
+        img
+          {
+          float:right;
+          }
+margin-left：属性可以对图像进行缩进
+        p
+          {
+          margin-left:2cm;
+          }
+          
+margin-left可能值    
+| auto     | 浏览器设置的左外边距。     
+| *length* | 定义固定的左外边距。默认值是0。  
+| *%*      | 以包含元素宽度的百分比指定左外边距。
+| inherit  | 规定应该从父元素继承左外边距。
+
+```
+
+其他可选择属性：
+```
+border：
+    1） <img style="border:5px solid black"> //顺序：border-width， border-style， border-color 不设置其中某一个也可以；
+    2）*css： p{border: 5px solid black;}
+hight/width:
+    -浏览器在下载图像之前就为其预留出了位置，从而可以加速文档的显示，还可以避免文档内容的移动。这两个属性都要求是整数值.果没有这些属性，浏览器就无法了解图像的尺寸，也就无法为图像保留合适的空间，因此当图像加载时，页面的布局就会发生变化。
+    -不论原图片的大小，最后都会自动变成预留空间的大小。
+    -请不要通过 height 和 width 属性来缩放图像。如果通过 height 和 width 属性来缩小图像，那么用户就必须下载大容量的图像（即使图像在页面上看上去很小）。正确的做法是，在网页上使用图像之前，应该通过软件把图像处理为合适的尺寸。
+    -使用%百分比值来代替像素的绝对值。这将使浏览器按照与浏览器显示窗口的一定比例来缩放图像。
+    <img src="/i/ct_1px.gif" width="20%" />
+    -也就是说，如果只设置图像 ct_1px.gif 的 width 属性的百分比值，会得到一个矩形图像（这是因为原始的 ct_1px.gif 就是一个只有 1px 宽和高的矩形）：
+*留白用css 的margin：（hspace 和 vspace×）
+    <img style="margin: 0px 50px">    
+ismap：将图像定义为服务器端图像映射。图像映射指的是带有可点击区域的图像。
+    <a href="demo_form.asp">
+    <img src="tulip.gif" ismap />
+    </a>
+    -当用户在 ismap 图像上单击了某处时，浏览器会自动把鼠标的 x、y 位置（相对于图像的左上角）发送到服务器端。特殊的服务器端软件（在本例中是 demo_form.asp 程序）可以根据这些坐标来做出响应。    
+*usemap:加载显示另一个文档。
+    -创建另一个标签<map>；# + 要使用的 <map> 元素的 name 或 id 属性
+    -usemap 属性的值是一个 URL，它指向特殊的 <map> 区域；
+    -图像定义为客户端图像映射。
+<map>:客户端图像映射。图像映射（image-map）指带有可点击区域的一幅图像。
+    -*<area/> 元素永远嵌套在 map 元素内部。area 元素可定义图像映射中的区域。
+    -*<img>中的 usemap 属性可引用 <map> 中的 id 或 name 属性（取决于浏览器），所以我们应同时向 <map> 添加 id 和 name 属性。
+*usemap和ismap的区别：
+    -usemap 客户端处理图像映射的好处是，它不要求有服务器或特殊的服务器软件，与 ismap 机制不同，它可以用在非 web （无网络）环境中，例如在本地的文件或者 CD-ROM 中使用。
+**列子:<https://www.w3school.com.cn/tiy/t.asp?f=eg_html_areamap>
+longdesc:指向一个包含图像描述信息的页面：    
+    <img href="" longdesc=""/> 
+    -和alt类似；longdesc可以指向一个包含对目标图片的描述的文件url；>1024字符；
+    
+    
+```
+
+
+## 2.a 链接 
+```
+anchor element:link to content outside of your web page.
+
+1)链接可以嵌套nest到其他文本元素中；2)a是一个文本级的标签，比如一个段落中的所有文字都能够被点击，那么应该是p包裹a，a的语义要小于p
+
+在所有浏览器中，链接的默认外观是：
+
+-   未被访问的链接带有下划线而且是蓝色的
+-   已被访问的链接带有下划线而且是紫色的
+-   活动链接带有下划线而且是红色的
+
+内容：
+href attribute：超链接
+anchor text：标签内容
+
+链接三种类型：
+1、外部链接：链接到外部文件
+<a href="02页面.html">点击进入另外一个文件</a>
+2、锚链接：在本页面或者其他页面的的不同位置进行跳转
+<a href="#contacts-header">Contacts</a>
+<h2 id="contacts-header">Contacts</h2>
+3、邮件链接
+<a href="mailto:xxx@163.com">点击进入我的邮箱</a>
+4.死链接dead links-利用hash symbol ：#
+<a href='#'> df</a>
+5.图片转化为链接
+<a href='#"> <img src="" alt="" >  < /a>  //普通光标变为单击链接的光标pointer
+```
+a标签可选择的属性
+```
+href 指向页面的url；
+download 属性规定被下载的超链接目标。
+    <a href=""  download="name" > <a/>
+    -必须要有href，下载的目标。
+    -name是文件名，不用后缀；浏览器将自动检测正确的文件扩展名并添加到文件 (.img, .pdf, .txt, .html, 等等)。
+hreflang  (*language):指定被链接文档的语言
+    <a href="" hreflang="zh" > zh代表中文<a/>
+    -hreflang 属性不会指定标签中的内容所使用的语言，而是指定被 href 属性调用的文档所使用的语言。
+    -仅在使用 href 属性时才可以指定 hreflang 属性
+media：规定目标 URL 是为特殊设备（比如 iPhone）、语音或打印媒介设计的。
+    -只能在 href 属性存在时使用。
+    -该属性可接受多个值。
+    -运算符：and not ，(,代表or)
+    -可能的设备：<https://www.w3school.com.cn/tags/att_a_media.asp>
+rel：属性用于指定当前文档/源文档与被链接文档/目标文档的关系。rev属性和rel相反
+    <a href="" rel="next" rev="prev"> <a/>
+    -从源到目标的关系是移动到下一个文档，而从目标到源的关系则是返回前一个文档。
+target:规定在何处打开链接文档
+    <a href="" target="_blank"> </a>
+     _blank      | 在新窗口中打开被链接文档。     
+     _self       | 默认。在相同的框架中打开被链接文档。
+     _parent     | 在父框架集中打开被链接文档。     
+     _top        | 在整个窗口中打开被链接文档。新开    
+     *framename* | 在指定的框架中打开被链接文档。
+    <a href="" target="view_window"> </a>
+    -当用户第一次选择内容列表中的某个链接时，浏览器将打开一个新的窗口，将它标记为 "view_window"，然后在其中显示希望显示的文档内容。如果用户从这个内容列表中选择另一个链接，且这个 "view_window" 仍处于打开状态，浏览器就会再次将选定的文档载入那个窗口，取代刚才的那些文档。
+    -和frameset搭配使用，在特定窗口打开文件；
+type： 属性规定目标文档的 MIME 类型。
+       只能在 href 属性存在时使用。 
+    
+```
+
+
+# 4.框架
+
+如果我们希望在一个网页中显示多个页面，那框架标签就派上用场了
+
+注意，框架标签不能放在`<body>`标签里面，因为`<body>`标签代表的只是一个页面，而框架标签代表的是多个页面。于是：`<frameset>`和`<body>`只能二选一。
+
+- 框架的集合用`<frameset>`表示，然后在`<frameset>`集合里放入一个一个的框架`<frame>`。`frameset`和`frame`已经从 Web标准中删除，建议使用 iframe 代替。
+
+# 5.列表
+## 1.unordered list/list item
+```
+<ul>和<li>
+    -ul的“儿子”不能是别的东西，只能有li。但是li是一个容器级标签，li里面什么都能放，甚至可以再放一个ul。
+    -再次强调，ul的作用，并不是给文字增加小圆点的，而是增加无序列表的“语义”的。
+    -应用：导航条，li嵌套
+```
+position属性：
+```
+list-style-position:inside // 给 ul 设置这个属性后，将小圆点包含在 li 元素的内部 
+```
+compact 属性：css替代。减少行间距以及对列表进行缩进来实现的。
+```
+<ul style='line-hight:80%'> </ul>
+```
+type属性：css代替。不同的列表样式：
+<https://www.w3school.com.cn/cssref/pr_list-style-type.asp>
+```
+ul.square{list-style-type:square}
+square/circle/lower-alpha/upper-roman
+```
+
+## 2.ordered list/ list item
+
+ol里面只能有li，li必须被ol包裹。li是容器级。
+
+ol这个东西用的不多，如果想表达顺序，大家一般也用ul。
+
+属性：
+```
+compact：同ul
+
+type：同ul
+
+start 属性规定有序列表的开始点
+    <ol start='5'>
+     -在 HTML 4.01 中，不赞成使用 ol 元素的 start 属性；在 XHTML 1.0 Strict DTD 中，不支持 ol 元素的 start 属性。
+    *-注释：目前，仍然没有 start 属性的 CSS 替代方案。
+    
+reversed 属性是逻辑属性。它规定列表属性为降序 (9, 8, 7...)而不是升序 (1, 2, 3...)。
+    -reversed 属性是 HTML5 中的新属性。
+    <ol reversed>
+    在 XHTML 中，禁止属性最小化，reversed 属性必须被定义为
+    <ol reversed="reversed">。
+```
+## 3.dl/dd，dt
+dl的子元素只能是dt和dd。定义列表的作用非常大。
+
+- `<dl>`：definition list，没有属性。
+
+- `<dt>`：definition title 列表的标题，这个标签是必须的
+
+- `<dd>`：definition description 列表的列表项，如果不需要它，可以不加
+定义列表表达的语义是两层：
+
+- （1）是一个列表，列出了几个dd项目
+- （2）每一个词儿都有自己的描述项。
+
+备注：
+
+- 1、dd是描述dt的。
+- 2、dt、dd都是容器级标签，想放什么都可以。所以，现在就应该更加清晰的知道：用什么标签，不是根据样子来决定，而是语义（语义本质上是结构）。
+
+# 6.表单
+表单标签用`<form>`表示，用于与服务器的交互。表单就是收集用户信息的，就是让用户填写的、选择的。
+## 1.input
+get input from user.
+
+`input` elements are self-closing.
+
+
+- 属性
+<https://www.w3school.com.cn/tags/tag_input.asp>
+    <https://www.w3school.com.cn/html5/att_input_type.asp>
+- `type`属性：上面第二个链接
+```
+    1） type=`Radio` Buttons:单选按钮
+
+        1.嵌套在自己的标签元素中：`label` element,lable标签中的for必须相同，用以匹配相同属性。
+        2.有一组相同的attribute，不止一个radio，且id必须相同；
+        3.radio会自动联系周围的lable标签元素
+        4.innerhtml可以不同
+        <form>
+             <label for="indoor"><input id="indoor" type="radio" name="indoor-outdoor"> Indoor</label>
+             <label for="outdoor"><input id="outdoor" type="radio" name="indoor-outdoor"> Outdoor</label><br>
+        </form>
+        *搭配form使用，可以有多个
+    
+   2）`type`=`checkbox`复选按钮
+        <form>
+            <lable for="ilu"> 
+                <input type="checkbox" name="love" id="i"> aaa
+            </lable>
+             <lable for="ilu"> 
+                <input type="checkbox" name="love" id="u"> bbb
+            </lable>
+        </form>
+    
+    3）按钮默认选中 checked by default
+        <input type="radio" checked>
+```
+    value和checkbox和radio的混合使用*
+       每一个都要加value，不然无发给后台传入正确信息。
+   <https://www.freecodecamp.org/learn/responsive-web-design/basic-html-and-html5/use-the-value-attribute-with-radio-buttons-and-checkboxes>
+   
+
+- `placeholder`： 占位符文本-add placeholder text to input feild;
+```
+   <input type=""  value=""  placeholder="">
+```
+   
+    
+- `required` 属性： 规定输入的值是必须的,
+```
+    例子：
+    <form action="http:/..">
+        <input type="text">
+        <input type="text"   required>     如果没有文本输入，不能转到action指定的网址
+        <button type="submit"> </button>
+    </form >
+```
+    
+- size：
+    规定输入的字符长度
+    
+ 
+    
+## 2.form表单
+属性
+- `id`：表单的名称，用于JS来操作或控制表单时使用；\
+- `action`：指定表单数据的处理程序，一般是PHP，如：action=“login.php”\表示表单将提交到哪里。
+- `method`：表单数据的提交方式，一般取值：get(默认)和post 
+- `button`:在表单中添加一个提交按钮。单击此按钮将把表单中的数据发送到使用表单的action属性指定的URL。
+```
+    <button type="submit"></button>
+```
+## 3.select/option
+- 下拉列表标签，里面的每一项用`<option>`表示。
+- select属性：
+```
+    size:滑动的时候显示n个选项
+            <select size="n" ><>
+                    
+    multiple:滑动的时候显示多尔选项
+            <select mutiple=""/mutiple="mutiple"><>
+```    
+- option属性
+```
+    selected: 深色显示，被选中。
+            <select size="n" >
+                <option  selected=""><>
+            <>
+```
+## 4.textarea
+- 多行文本输入框，text 就是“文本”，area 就是“区域”。
+
+- 可选属性：
+
+  - `rows="4"`：指定文本区域的行数。\
+  - `cols="20"`：指定文本区域的列数。\
+  - `readonly`：只读。
+
+```
+    <form>
+        <textarea name="txtInfo" rows="4" cols="20">1、不爱摄影不懂设计的程序猿不是一个好的产品经理。</textarea>
+    </form>
+```
+
+## 5、label
+
+- 为 input 元素定义标注（标记）。
+```
+<input type="radio" name="sex" /> 男
+<input type="radio" name="sex" /> 女
+```
+
+对于上面这样的单选框，我们只有点击那个单选框（小圆圈）才可以选中，点击“男”、“女”这两个文字时是无法选中的；于是，label标签派上了用场。
+
+本质上来讲，“男”、“女”这两个文字和input标签时没有关系的，而label就是解决这个问题的。我们可以`通过label把input和汉字包裹起来作为整体。`
+
+```
+<input type="radio" name="sex" id="nan" /> <label for="nan">男</label>
+<input type="radio" name="sex" id="nv"  /> <label for="nv">女</label>
+```
+
+上方代码中，让label标签的**for 属性值**，和 input 标签的 **id 属性值相同**，那么这个label和input就有绑定关系了。
+
+任何表单元素都有label。
+
+
+# 7.分块和节
+*特点*：块级标签独占一行
+
+唯一的区别在于：span是不换行的，而div是换行的。
+## 1.div
+
+- div的语义是division“分割”； 可以把标签中的内容分割为独立的区块。
++ div在浏览器中，默认是不会增加任何的效果的，但是语义变了，div中的所有元素是一个小区域。
+- div标签是一个`容器级标签，里面什么都能放`，甚至可以放div自己。
+## 2.span
+- span的语义就是span“范围、跨度”。
+- span也是表达“小区域、小跨度”的标签，但只是一个`文本级的标签`。
+- span里面只能放置`文字、图片、表单`元素。 span里面不能放`p、h、ul、dl、ol、div`。通常用span实现`文本的部分提示功能`。
+
+# 8.表格
+ ## `<table>和<tr>、<td>、<th>、<caption> ` 
+ - td:tabledatace 数据单元； tr：tablerow  th：table header cell 表头单元格
+ - 一个表格`<table>`是由每行`<tr>`组成的，每行是由每个单元格`<td>`组成的。`<th>`元素定义表头。caption 元素定义表格标题。
+- 在以前，要想固定标签的位置，唯一的方法就是表格。现在可以通过CSS定位的功能来实现。但是现在在做页面的时候，表格作用还是有一些的。
+<https://www.w3school.com.cn/tags/tag_table.asp>
+
+# 9.音频文件
+
+# 10.格式
+## 1、`<center>`
+
+此时center代表是一个标签，而不是一个属性值了。只要是在这个标签里面的内容，都会居于浏览器的中间。
+
+到了HTML5里面，center标签不建议使用，建议使用css布局来实现。
+
+## 2、`<pre>`
+
+pre 元素可定义预格式化的文本。被包围在 pre 元素中的文本通常会保留空格和换行符。而文本也会呈现为等宽字体。
+
+`<pre>` 标签的一个常见应用就是用来表示计算机的源代码。真正排网页过程中，`<pre>`标签几乎用不着。
+
+## 4、废弃
+
+字体标签`<font>`（已废弃），规定文本的字体、字体尺寸、字体颜色。
+粗体标签`<b>`或`<strong>`（已废弃）
+
+
+## 5、`<sup>和<sub>`
+
+上标`<sup>`   下标`<sub>`
+
+## 6、`<u>、<s>或<del>、<i>或<em>`
+
+下划线、中划线、斜体
+
+- `<u>`：下划线标记
+
+- `<s>`或`<del>`：中划线标记（删除线）
+
+- `<i>`或`<em>`：斜体标记
+
+
+
+
+
+# 练习：
+## 1.clear
+
+    
+    
+    
+
