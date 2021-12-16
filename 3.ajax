@@ -1,0 +1,179 @@
+无刷新更新数据。
+
+## express基本使用--->live server替代？
+express是基于node.js，快速开放极简的web开发框架。
+
+：一键安装，实现自动刷新，架设本地服务器环境。
+
+
+   ```
+npm init --yes （终端初始化）
+npm i express (安装express)
+用vscode在终端打开--->  node js文件名字.js
+```
+```
+
+//1.引入express
+const express=require('express');
+//2.创建应用对象
+const app=express（）;
+//3.创建路由规则
+app.get('/',(request,response)=>{
+    //设置响应
+      response.send('HELLO EXPRESS');
+})；
+//4.监听端口启动服务
+app.listen(8000,()=>{
+    console.log("服务已经启动，8000端口监听中...")；
+})
+
+```
+
+
+## nodemon  
+- 基于node.js.监视node.js应用程序中的任何更改并自动重启服务
+<https://www.npmjs.com/package/nodemon>
+
+```
+//安装： 
+npm install -g nodemon
+
+//先打开终端！，然后再node启动服务端：
+//管理员身份打开PowerShell  输入：Set-ExecutionPolicy RemoteSigned        Y
+//- 如果server.js里面内容有变化，ctrls后，自动更新，不用重启服务器。
+nodemon   server.js   
+```
+
+## bootcdn
+<https://www.bootcdn.cn/>
+- 我们在使用第三方插件时，可以使用cdn引入，而无需下载到本地。
+- 搜索所需要的插件如jquery，选择版本，复制地址即可使用。
+- 使用cdn的优点是加快页面的加载速度，无需下载第三方插件，节约项目打包大小。
+- 缺点就是提供方崩了，我们的网站也跟着崩了。但是bootCDN还是相对较稳定的。
+- 需要权衡利弊，个人网站可以使用cdn。
+
+## **请求行、请求头、请求体：request headers+payload；响应行+头+体：response headers+response**
+![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0fe551b738bf4470a2a3373359415738~tplv-k3u1fbpfcp-watermark.image?)
+## 请求报文
+```
+行   POST /s?ie=utf-8  HTTP/1.1 
+头   Host:atguigu.com
+     Cookie:name=guigu
+     Conten-type:application/x-www-form-urlencoded
+     User-Agent: chrome 83
+空行
+体   username=admin&password=admin
+```
+
+## 响应报文
+```
+行  HTTP/1.1 200 OK        //状态码200、字符串ok
+头  Content-Type:text/html;charset=utf-8
+    Content-length: 2048
+    Content-encoding:gzip
+空行
+体   <html>
+        <head>
+        </head>
+        <body>
+            <h1>ddf</h1>
+        </body>
+     </html>
+```
+
+
+![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dcc62adecd834748b8c2200726294375~tplv-k3u1fbpfcp-watermark.image?)
+
+## **注意端口占用**
+
+
+![image.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/908e82fd63e749b5a88aef9b9ee1f826~tplv-k3u1fbpfcp-watermark.image?)
+
+cmd普通窗口。node：有一个服务正在启用，没有关闭的窗口。用^c关闭。
+![image.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/987957ac81b94681aa0ea0fc556c1fb7~tplv-k3u1fbpfcp-watermark.image?)
+
+
+# ajax
+xhr是ajax
+
+![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/85bacecbf1fe4408bb83582dda4bbe9f~tplv-k3u1fbpfcp-watermark.image?)
+
+
+
+## XMLHttpRequest 对象方法
+
+| 方法                         | 描述        |
+| ------------------- | ---------------------- |
+| new XMLHttpRequest()      | 创建新的 XMLHttpRequest 对象                     |
+| abort()                                       | 取消当前请求     |
+| getAllResponseHeaders()                       | 返回头部信息    |
+| getResponseHeader()                           | 返回特定的头部信息      |
+| open(*method*, *url*, *async*, *user*, *psw*) | 规定请求-   method：请求类型 GET 或 POST-   url：文件位置-   async：true（异步）或 false（同步）-   user：可选的用户名称-   psw：可选的密码 |
+| send()                                        | 将请求发送到服务器，用于 GET 请求            |
+| send(*string*)                                | 将请求发送到服务器，用于 POST 请求|
+| setRequestHeader()                            | 向要发送的报头添加标签/值对
+
+## XMLHttpRequest 对象属性
+
+| 属性                 | 描述                                                                                                                                                        |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| onreadystatechange | 定义当 readyState 属性发生变化时被调用的函数                                                                                                                              |
+| readyState         | 保存 XMLHttpRequest 的状态。-   0：请求未初始化-   1：服务器连接已建立-   2：请求已收到-   3：正在处理请求-   4：请求已完成且响应已就绪                                                              |
+| responseText       | 以字符串返回响应数据                                                                                                                                                |
+| responseXML        | 以 XML 数据返回响应数据                                                                                                                                            |
+| status             | 返回请求的状态号-   200: "OK"-   403: "Forbidden"-   404: "Not Found"如需完整列表请访问 [Http 消息参考手册](https://www.w3school.com.cn/tags/ref_httpmessages.asp "HTTP 状态消息") |
+| statusText         | 返回状态文本（比如 "OK" 或 "Not Found"）
+
+## get请求
+```
+//1.创建对象
+    const xhr= new XMLHttpRequest();
+//2.初始化，设置请求方式和url
+    //xhr.open("GET","http://127.0.0.1:8000/server"); //设置请求参数url后+？+参数
+    xhr.open("GET","http://127.0.0.1:8000/server?a=1&b=3");
+//3.发送
+    xhr.send();
+//4.绑定事件  处理服务端返回结果
+    // on  --when； readystate：属性表示状态0-4 
+    xhr.onreadystatechange=function(){
+    //判断  服务端返回了所有结果4
+        if(xhr.readyState===4){
+        //判断响应状态码200 400 501  2xx成功
+            if(xhr.status >= 200 && xhr.status < 300){
+                    console.log(xhr.response);  //响应体
+                    console.log(xhr.status)    //响应状态码
+                    console.log(xhr.statusText); //状态字符串
+                    console.log(xhr.getAllResponseHeaders())  //所有响应头
+                    odiv.innerHTML=xhr.response;
+            }
+        }
+    };
+       
+```
+## ajax设置请求参数
+
+![image.png](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/51eba9bf4b6c4c5ebd8a3118568bb033~tplv-k3u1fbpfcp-watermark.image?)<https://developer.mozilla.org/zh-CN/docs/Web/API/fetch>
+
+# ajax工具包
+
+## axios
+<https://www.bootcdn.cn/>
+## jquery
+<https://www.bootcdn.cn/>
+## fetch
+<https://developer.mozilla.org/zh-CN/docs/Web/API/fetch>
+# 跨域
+
+## 同源策略：安全策略
+    当前网页的url和目标资源的url：协议http、域名aa.com、端口号8000必须一致则是同源，否则叫做跨域。
+    ajax默认同源。
+    
+## jsonp
+- 解决跨域。jsonwithpadding，只支持git使用
+- 网页里img script img iframe 天生具有跨域能力。jsonp就是借用script标签的跨域能力发送请求。
+## cors
+- 官方跨域解决方案，跨域资源共享
+- 客户端：按照ajax方案做就行。服务端：设置响应头，告诉服务端该请求允许跨域。
+- fetch axios等都是因为设置了cros
+<https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS>
+ 
